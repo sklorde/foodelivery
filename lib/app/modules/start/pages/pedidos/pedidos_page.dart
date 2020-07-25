@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:uimanager/app/widgets/custom_appbar/custom_appbar_widget.dart';
 import 'pedidos_controller.dart';
 
 class PedidosPage extends StatefulWidget {
@@ -16,11 +17,11 @@ class _PedidosPageState extends ModularState<PedidosPage, PedidosController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
+      appBar: CustomAppbarWidget(),
       body: Column(
-        children: <Widget>[],
+        children: <Widget>[
+          Text('oi'),
+        ],
       ),
     );
   }
