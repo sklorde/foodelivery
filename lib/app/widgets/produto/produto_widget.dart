@@ -8,13 +8,14 @@ class ProdutoWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsets.only(left: 10, right: 10),
       decoration: BoxDecoration(
         color: Colors.white,
         boxShadow: [
           BoxShadow(
             color: Colors.orange[200].withOpacity(0.2),
-            spreadRadius: 5,
-            blurRadius: 7,
+            spreadRadius: 2,
+            blurRadius: 5,
             offset: Offset(0, 3),
           ),
         ],
@@ -22,10 +23,24 @@ class ProdutoWidget extends StatelessWidget {
       ),
       height: 130,
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          Image.network(
-            produto.imageUrl,
-            height: 120,
+          Container(
+            height: 110,
+            width: 110,
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.orange),
+              shape: BoxShape.circle,
+            ),
+            child: Padding(
+              padding: EdgeInsets.all(3),
+              child: ClipOval(
+                child: Image.network(
+                  produto.imageUrl,
+                  fit: BoxFit.fill,
+                ),
+              ),
+            ),
           ),
           Expanded(
             child: Padding(
