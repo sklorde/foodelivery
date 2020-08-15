@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:uimanager/app/shared/Models/Produto.dart';
 
 class ProdutoWidget extends StatelessWidget {
+  Produto produto;
+  ProdutoWidget(this.produto);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -20,7 +24,7 @@ class ProdutoWidget extends StatelessWidget {
       child: Row(
         children: <Widget>[
           Image.network(
-            'https://www.hamburguerdeorigem.com.br/images/uploaded/homeburger/90269284cd465b4f79e7d7fbb5891eb3.png',
+            produto.imageUrl,
             height: 120,
           ),
           Expanded(
@@ -31,7 +35,7 @@ class ProdutoWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     Text(
-                      'CHEDDAR BEEF',
+                      produto.nome,
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 17,
@@ -41,7 +45,7 @@ class ProdutoWidget extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      'Hamburguer com cheddar e 1 fatia de carne',
+                      produto.descricao,
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 14,
@@ -51,7 +55,7 @@ class ProdutoWidget extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      'R\$ 9,90',
+                      'R\$ ${produto.valor.toStringAsFixed(2).replaceAll('.', ',')}',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 16,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:uimanager/app/widgets/categoria/categoria_widget.dart';
 import 'package:uimanager/app/widgets/custom_appbar/custom_appbar_widget.dart';
@@ -61,24 +62,28 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
               ),
             ),
           ),
-          Expanded(
-            child: ListView.separated(
-              padding: EdgeInsets.only(
-                left: 15,
-                right: 15,
-                top: 15,
-              ),
-              itemCount: 10,
-              itemBuilder: (BuildContext context, int index) {
-                return ProdutoWidget();
-              },
-              separatorBuilder: (BuildContext context, int index) {
-                return Padding(
-                  padding: EdgeInsets.only(top: 15),
-                );
-              },
-            ),
-          ),
+          Expanded(child: Observer(
+            builder: (_) {
+              return ListView.separated(
+                padding: EdgeInsets.only(
+                  left: 15,
+                  right: 15,
+                  top: 15,
+                ),
+                itemCount: controller.produtos.length,
+                itemBuilder: (_, index) {
+                  final produto = controller.produtos[index];
+
+                  return ProdutoWidget(produto);
+                },
+                separatorBuilder: (BuildContext context, int index) {
+                  return Padding(
+                    padding: EdgeInsets.only(top: 15),
+                  );
+                },
+              );
+            },
+          )),
         ],
       ),
     );

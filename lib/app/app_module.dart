@@ -1,3 +1,4 @@
+import 'shared/repositories/postgres_repository.dart';
 import 'package:uimanager/app/widgets/produto/produto_controller.dart';
 import 'widgets/categoria/categoria_controller.dart';
 import 'widgets/custom_appbar/custom_appbar_controller.dart';
@@ -11,6 +12,7 @@ import 'modules/start/start_module.dart';
 class AppModule extends MainModule {
   @override
   List<Bind> get binds => [
+        Bind((i) => PostgresRepository()),
         Bind((i) => ProdutoController()),
         Bind((i) => CategoriaController()),
         Bind((i) => CustomAppbarController()),
